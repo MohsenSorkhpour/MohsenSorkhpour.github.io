@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Mohsen Sorkhpour | Machine Learning & Trustworthy AI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Portfolio of Mohsen Sorkhpour, Machine Learning and Trustworthy AI researcher."
+    />
+    <meta name="author" content="Mohsen Sorkhpour" />
+
+    <!-- Google Fonts: Material-style typography & icons -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+    />
+
+    <!-- Material-inspired flat design -->
+    <style>
+      :root {
+        /* Light theme (default) */
+        --bg: #ffffff;
+        --bg-gradient: #ffffff;
+        --bg-elevated: #ffffff;
+        --bg-chip: rgba(37, 99, 235, 0.06);
+        --accent: #1d4ed8;
+        --accent-soft: rgba(37, 99, 235, 0.1);
+        --accent-strong: #1d4ed8;
+        --text-main: #0f172a;
+        --text-muted: #6b7280;
+        --border-subtle: rgba(148, 163, 184, 0.4);
+        --navbar-bg: rgba(255, 255, 255, 0.96);
+        --section-bg: #ffffff;
+        --hero-bg: #ffffff;
+        --chip-border: rgba(148, 163, 184, 0.6);
+        --chip-bg: rgba(255, 255, 255, 0.9);
+        --chip-bg-emph: rgba(37, 99, 235, 0.08);
+        --chip-text-emph: #1d4ed8;
+        --toggle-bg: rgba(15, 23, 42, 0.03);
+        --toggle-border: rgba(148, 163, 184, 0.7);
+        --nav-link-bg-hover: rgba(15, 23, 42, 0.04);
+        --nav-link-border-hover: rgba(148, 163, 184, 0.8);
+        --surface-soft: rgba(255, 255, 255, 0.9);
+        --surface-subtle: rgba(15, 23, 42, 0.02);
+      }
+
+      :root[data-theme="dark"] {
+        --bg: #050816;
+        --bg-gradient: radial-gradient(
+          circle at top,
+          #111827 0,
+          #020617 55%,
+          #020617 100%
+        );
+        --bg-elevated: #020617;
+        --bg-chip: rgba(79, 70, 229, 0.1);
+        --accent: #4f46e5;
+        --accent-soft: rgba(79, 70, 229, 0.18);
+        --accent-strong: #818cf8;
+        --text-main: #f9fafb;
+        --text-muted: #9ca3af;
+        --border-subtle: rgba(148, 163, 184, 0.35);
+        --navbar-bg: rgba(15, 23, 42, 0.98);
+        --section-bg: rgba(15, 23, 42, 0.98);
+        --hero-bg: radial-gradient(
+          circle at top left,
+          #111827,
+          #020617 58%,
+          #020617 100%
+        );
+        --chip-border: rgba(148, 163, 184, 0.5);
+        --chip-bg: rgba(15, 23, 42, 0.95);
+        --chip-bg-emph: rgba(79, 70, 229, 0.3);
+        --chip-text-emph: #818cf8;
+        --toggle-bg: rgba(15, 23, 42, 0.9);
+        --toggle-border: rgba(148, 163, 184, 0.6);
+        --nav-link-bg-hover: rgba(31, 41, 55, 0.9);
+        --nav-link-border-hover: rgba(148, 163, 184, 0.7);
+        --surface-soft: rgba(15, 23, 42, 0.96);
+        --surface-subtle: rgba(15, 23, 42, 0.85);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Roboto", system-ui, -apple-system, BlinkMacSystemFont,
+          "SF Pro Text", "Segoe UI", sans-serif;
+        background: var(--bg-gradient);
+        color: var(--text-main);
+        scroll-behavior: smooth;
+      }
+
+      :root:not([data-theme="dark"]) body {
+        background: #ffffff;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 16px;
+      }
+
+      a {
+        color: var(--accent-strong);
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      /* Top nav (flat Material app bar) */
+      .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        width: 100%;
+        max-width: 960px;
+        margin-bottom: 16px;
+        background: var(--navbar-bg);
+        border-radius: 0;
+        padding: 10px 4px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        box-shadow: none;
+      }
+
+      .navbar-left {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 0;
+      }
+
+      .navbar-links-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .navbar-links {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        font-size: 13px;
+      }
+
+      .navbar-links a {
+        padding: 6px 10px;
+        border-radius: 999px;
+        border: none;
+        color: var(--text-muted);
+        text-decoration: none;
+        transition: background 0.18s ease-out, color 0.18s ease-out,
+          transform 0.18s ease-out;
+      }
+
+      .navbar-links a:hover {
+        background: var(--nav-link-bg-hover);
+        color: var(--text-main);
+        transform: translateY(-1px);
+        text-decoration: none;
+      }
+
+      .theme-toggle {
+        border: 1px solid var(--toggle-border);
+        background: var(--toggle-bg);
+        border-radius: 999px;
+        width: 34px;
+        height: 34px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background 0.18s ease-out, transform 0.18s ease-out,
+          box-shadow 0.18s ease-out, border-color 0.18s ease-out;
+        box-shadow: 0 1px 3px rgba(15, 23, 42, 0.18);
+      }
+
+      .theme-toggle:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 10px rgba(15, 23, 42, 0.25);
+        border-color: var(--accent);
+      }
+
+      .theme-toggle .material-icons-outlined {
+        font-size: 19px;
+        color: var(--text-muted);
+      }
+
+      /* Page container */
+      .page {
+        width: 100%;
+        max-width: 960px;
+      }
+
+      /* Header / hero (re-styled like sample page) */
+      .hero {
+        margin-top: 40px;
+        padding: 24px 20px 24px;
+        border-radius: 0;
+        background: var(--hero-bg);
+        display: grid;
+        grid-template-columns: minmax(0, 2.4fr) minmax(0, 1.3fr);
+        gap: 28px;
+        align-items: center;
+        box-shadow: none;
+      }
+
+      :root[data-theme="dark"] .hero {
+        box-shadow: none;
+      }
+
+      @media (max-width: 768px) {
+        .hero {
+          grid-template-columns: minmax(0, 1fr);
+          padding: 18px 16px 20px;
+        }
+      }
+
+      .hero-main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .hero-main h1 {
+        margin: 0 0 4px;
+        font-size: clamp(30px, 3.4vw, 36px);
+        font-weight: 700;
+        letter-spacing: 0.03em;
+      }
+
+      .hero-tagline {
+        margin: 0 0 18px;
+        font-size: 15px;
+        font-weight: 500;
+        color: var(--text-main);
+      }
+
+      .hero-summary {
+        font-size: 14px;
+        line-height: 1.7;
+        color: var(--text-main);
+        max-width: 640px;
+        margin: 0 auto 10px;
+        text-align: center;
+      }
+
+      .hero-summary strong {
+        font-weight: 500;
+      }
+
+      /* About links styled like "Email / LinkedIn / CV" */
+      .hero-links {
+        margin-top: 18px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        justify-content: center;
+        font-size: 14px;
+      }
+
+      .hero-links a {
+        background: transparent;
+        padding: 0;
+        border-radius: 0;
+        border: none;
+        color: var(--accent-strong);
+        font-weight: 500;
+        text-decoration: none;
+        box-shadow: none;
+        transform: none;
+      }
+
+      .hero-links a:hover {
+        text-decoration: underline;
+        background: transparent;
+        box-shadow: none;
+        transform: none;
+        cursor: pointer;
+      }
+
+      /* add " / " separators between links */
+      .hero-links a + a::before {
+        content: "/";
+        margin: 0 6px 0 2px;
+        color: var(--text-main);
+        font-weight: 400;
+      }
+
+      /* make all hero links look the same (no button for CV) */
+      .hero-links a.primary-link {
+        background: transparent;
+        color: var(--accent-strong);
+        box-shadow: none;
+        font-weight: 500;
+      }
+
+      /* hide icons inside about links to match simple text style */
+      .hero-links a .material-icons-outlined,
+      .hero-links a svg {
+        display: none;
+      }
+
+      .hero-photo {
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      .hero-photo-inner {
+        position: relative;
+        width: 220px;
+        max-width: 240px;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        overflow: hidden;
+        background: #e5e7eb;
+        box-shadow: none;
+      }
+
+      :root[data-theme="dark"] .hero-photo-inner {
+        background: #020617;
+        box-shadow: none;
+      }
+
+      .hero-photo-inner::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: transparent;
+        pointer-events: none;
+      }
+
+      .hero-photo-inner img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        filter: saturate(1.03) contrast(1.05);
+      }
+
+      /* hide badge on photo to match reference style */
+      .hero-photo-badge {
+        display: none;
+      }
+
+      @media (max-width: 768px) {
+        .hero-photo {
+          justify-content: center;
+        }
+
+        .hero-photo-inner {
+          width: 170px;
+        }
+      }
+
+      /* Section layout (flat, no card borders) */
+      .section {
+        margin-top: 24px;
+        padding: 18px 20px 20px;
+        border-radius: 0;
+        background: var(--section-bg);
+        box-shadow: none;
+      }
+
+      :root[data-theme="dark"] .section {
+        box-shadow: none;
+      }
+
+      .section-header {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 8px;
+        margin-bottom: 14px;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+        padding-bottom: 8px;
+      }
+
+      .section-title {
+        margin: 0;
+        font-size: 16px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .section-subtitle {
+        margin: 0;
+        font-size: 12px;
+        color: var(--text-muted);
+      }
+
+      /* Chips / tags */
+      .chip-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        font-size: 12px;
+      }
+
+      .chip {
+        padding: 4px 9px;
+        border-radius: 999px;
+        border: 1px solid var(--chip-border);
+        background: var(--chip-bg);
+        color: var(--text-muted);
+      }
+
+      .chip.chip-emph {
+        border-color: rgba(37, 99, 235, 0.5);
+        background: var(--chip-bg-emph);
+        color: var(--chip-text-emph);
+        font-weight: 500;
+      }
+
+      /* Research interests list (instead of chips) */
+      .research-list {
+        max-width: 640px;
+        margin: 0 auto;
+        padding-left: 22px;
+        font-size: 14px;
+        line-height: 1.7;
+        color: var(--text-main);
+      }
+
+      .research-list li {
+        margin-bottom: 4px;
+      }
+
+      /* Publications (flat list items) */
+      .pub-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        font-size: 14px;
+      }
+
+      .pub-item {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        gap: 12px;
+        padding: 10px 4px;
+        border-radius: 0;
+        background: transparent;
+      }
+
+      .pub-thumb {
+        width: 120px;
+        flex-shrink: 0;
+      }
+
+      .pub-thumb img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 10px;
+      }
+
+      .pub-main {
+        min-width: 0;
+      }
+
+      .pub-title {
+        margin: 0 0 4px;
+        font-weight: 500;
+      }
+
+      .pub-authors,
+      .pub-venue {
+        margin: 0;
+        font-size: 13px;
+        color: var(--text-muted);
+      }
+
+      .pub-venue {
+        margin-top: 2px;
+      }
+
+      .pub-badges {
+        margin-top: 4px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        font-size: 11px;
+      }
+
+      .pub-links {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 6px;
+        font-size: 12px;
+      }
+
+      .pub-links a {
+        padding: 4px 9px;
+        border-radius: 999px;
+        border: none;
+        background: var(--surface-soft);
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        text-decoration: none;
+        color: var(--text-main);
+        transition: background 0.18s ease-out, transform 0.18s ease-out,
+          box-shadow 0.18s ease-out;
+      }
+
+      :root[data-theme="dark"] .pub-links a {
+        background: rgba(15, 23, 42, 0.9);
+      }
+
+      .pub-links a:hover {
+        background: var(--accent-soft);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 10px rgba(15, 23, 42, 0.25);
+        text-decoration: none;
+      }
+
+      @media (max-width: 640px) {
+        .pub-item {
+          grid-template-columns: minmax(0, 1fr);
+        }
+
+        .pub-thumb {
+          width: 100%;
+          margin-bottom: 6px;
+        }
+
+        a.pub-links {
+          align-items: flex-start;
+          display: none;
+        }
+      }
+     
+
+      /* Experience / education list (flat) */
+      .timeline {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        font-size: 14px;
+      }
+
+      .timeline-item {
+        padding: 8px 4px;
+        border-radius: 10px;
+        background: transparent;
+      }
+
+      .timeline-title {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 4px 10px;
+        margin-bottom: 2px;
+      }
+
+      .timeline-role {
+        font-weight: 540;
+      }
+
+      .timeline-meta {
+        font-size: 12px;
+        color: var(--text-muted);
+      }
+
+      .timeline-body {
+        margin: 4px 0 0;
+        font-size: 13px;
+        color: var(--text-main);
+        line-height: 1.6;
+      }
+
+      /* Skills grid (flat tiles) */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 10px;
+        font-size: 13px;
+      }
+
+      .skills-group {
+        padding: 8px 6px;
+        border-radius: 10px;
+        background: var(--surface-subtle);
+      }
+
+      :root[data-theme="dark"] .skills-group {
+        background: rgba(15, 23, 42, 0.9);
+      }
+
+      .skills-group-title {
+        margin: 0 0 5px;
+        font-size: 13px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .skills-group ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .skills-group li {
+        margin-bottom: 3px;
+        color: var(--text-muted);
+      }
+
+      /* Teaching & misc lists */
+      .list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        font-size: 13px;
+        color: var(--text-main);
+      }
+
+      .list li {
+        margin-bottom: 6px;
+      }
+
+      .list small {
+        color: var(--text-muted);
+      }
+
+      /* Footer */
+      footer {
+        width: 100%;
+        max-width: 960px;
+        text-align: right;
+        margin: 18px 0 6px;
+        font-size: 11px;
+        color: var(--text-muted);
+      }
+
+       .pub-links {
+          align-items: flex-start;
+          display: none;
+        }
+    </style>
+  </head>
+
+  <body>
+    <!-- Top navigation -->
+    <nav class="navbar" style="border-bottom: 1px solid #eeee">
+      <div class="navbar-left"></div>
+
+      <div class="navbar-links-wrapper">
+        <div class="navbar-links">
+          <a href="#about">About</a>
+          <a href="#research">Research</a>
+          <a href="#publications">Publications</a>
+          <a href="#experience">Experience</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <button
+          class="theme-toggle"
+          type="button"
+          aria-label="Switch to dark theme"
+          data-theme-toggle=""
+        >
+          <span class="material-icons-outlined">dark_mode</span>
+        </button>
+      </div>
+    </nav>
+
+    <main class="page">
+      <!-- Hero / header -->
+      <section class="hero" id="about">
+        <div class="hero-main">
+          <h1>Mohsen Sorkhpour</h1>
+          <p class="hero-tagline">AI Research Scientist</p>
+
+          <p class="hero-summary">
+            I am a <strong>machine learning researcher</strong> and ML /
+            software engineer with a solid background in artificial intelligence
+            and more than a decade of experience building real-world software
+            systems. My work focuses on <strong>trustworthy AI</strong>,
+            particularly <strong>LLM security</strong>, adversarial evaluation,
+            and <strong>robust learning</strong> in practical deployments.
+          </p>
+          <p class="hero-summary">
+            On the research side, I design methods for
+            <strong>red-teaming and stress-testing large language models</strong
+            >, from adaptive multi-step attacks (RedHit) to robust federated
+            learning against poisoning. On the engineering side, I have shipped
+            production features in large ERP platforms, speech-to-text services,
+            and web applications using Python, C#, JavaScript, SQL, and modern
+            ML frameworks. I like problems where
+            <strong>clean engineering</strong> and
+            <strong>careful experimental design</strong> come together.
+          </p>
+
+          <div class="hero-links">
+            <a href="CV_A.pdf" target="_blank" class="primary-link">
+              <span class="material-icons-outlined">description</span>
+              <span class="link-label">CV (PDF)</span>
+            </a>
+            <a class="about-links" href="mailto:Sorkhpur.mohsen@gmail.com">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  fill="currentColor"
+                  d="M4.5 5.75A2.75 2.75 0 0 1 7.25 3h9.5A2.75 2.75 0 0 1 19.5 5.75v12.5A2.75 2.75 0 0 1 16.75 21h-9.5A2.75 2.75 0 0 1 4.5 18.25Zm2.04.75a.75.75 0 0 0-.54 1.28l5.21 5.22a.75.75 0 0 0 1.06 0l5.22-5.22a.75.75 0 0 0-.53-1.28Z"
+                />
+              </svg>
+              <span class="link-label">Email</span>
+            </a>
+            <a
+              class="about-links"
+              href="https://scholar.google.com/citations?hl=en&user=yYB7LA8AAAAJ"
+              target="_blank"
+            >
+              <span class="material-icons-outlined">school</span>
+              <span class="link-label">Scholar</span>
+            </a>
+            <a
+              class="about-links"
+              href="https://github.com/Moh3nsp"
+              target="_blank"
+            >
+              <span class="material-icons-outlined">code</span>
+              <span class="link-label">GitHub</span>
+            </a>
+            <a
+              class="about-links"
+              href="https://www.researchgate.net/profile/Mohsen-Sorkhpour-2"
+              target="_blank"
+            >
+              <span class="material-icons-outlined">science</span>
+              <span class="link-label">ResearchGate</span>
+            </a>
+            <a
+              class="about-links"
+              href="https://www.linkedin.com/in/mohsen-sorkhpour/"
+              target="_blank"
+            >
+              <span class="material-icons-outlined">work</span>
+              <span class="link-label">LinkedIn</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-photo">
+          <div class="hero-photo-inner">
+            <!-- Replace with your own photo path -->
+            <img src="images/profile.jpg" alt="Portrait of Mohsen Sorkhpour" />
+            <div class="hero-photo-badge">
+              <span class="dot"></span>
+              <span>Trustworthy&nbsp;AI · LLM&nbsp;Security</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Research interests -->
+      <section class="section" id="research">
+        <div class="section-header">
+          <h2 class="section-title">Research Interests</h2>
+        </div>
+        <ul class="research-list">
+          <li>Natural Language Processing &amp; Large Language Models</li>
+          <li>Multi-Agent Systems</li>
+          <li>Trustworthy &amp; Reliable AI</li>
+          <li>LLM Red-Teaming and Adversarial Evaluation</li>
+        </ul>
+      </section>
+
+      <!-- Publications -->
+      <section class="section" id="publications">
+        <div class="section-header">
+          <h2 class="section-title">Publications</h2>
+        </div>
+
+        <div class="pub-list">
+          <!-- RedHit -->
+          <article class="pub-item">
+            <div class="pub-thumb">
+              <img
+                src="images/pub_redhit.jpg"
+                alt="Visualization for RedHit LLM red-teaming paper"
+              />
+            </div>
+            <div class="pub-main">
+              <h3 class="pub-title">
+                RedHit: Adaptive Red-Teaming of Large Language Models via
+                Search, Reasoning, and Preference Optimization
+              </h3>
+              <p class="pub-authors">
+                <strong>Mohsen Sorkhpour</strong> et al.
+              </p>
+              <p class="pub-venue">
+                ACL &mdash; LLM Security Workshop (LLMSec), 2025.
+              </p>
+              <div class="pub-badges">
+                <span class="chip chip-emph">Outstanding Paper Award</span>
+                <span class="chip">LLM Security</span>
+                <span class="chip">Red-Teaming</span>
+              </div>
+            </div>
+            <div class="pub-links">
+              <a
+                href="https://aclanthology.org/2025.llmsec-1.2.pdf"
+                target="_blank"
+              >
+                <span class="material-icons-outlined">picture_as_pdf</span>
+                <span>PDF</span>
+              </a>
+              <a
+                href="https://sig.llmsecurity.net/workshop/#outstanding-paper-awards"
+                target="_blank"
+              >
+                <span class="material-icons-outlined">emoji_events</span>
+                <span>Workshop · Award</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Robust Federated Learning with Capsule Networks -->
+          <article class="pub-item">
+            <div class="pub-thumb">
+              <img
+                src="images/pub_federated_capsule.jpg"
+                alt="Diagram for robust federated learning with capsule networks"
+              />
+            </div>
+            <div class="pub-main">
+              <h3 class="pub-title">
+                Robust Federated Learning Approach against Poisoning Attacks
+                using Capsule Neural Networks
+              </h3>
+              <p class="pub-authors">
+                <strong>Mohsen Sorkhpour</strong> et al.
+              </p>
+              <p class="pub-venue">
+                International Journal of Engineering, 38(5), 1164&ndash;1179,
+                2025.
+              </p>
+              <div class="pub-badges">
+                <span class="chip">Federated Learning</span>
+                <span class="chip">Adversarial Robustness</span>
+              </div>
+            </div>
+            <div class="pub-links">
+              <a href="https://www.ije.ir/article_207664.html" target="_blank">
+                <span class="material-icons-outlined">open_in_new</span>
+                <span>Journal Page</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Auto-CIDS -->
+          <article class="pub-item">
+            <div class="pub-thumb">
+              <img
+                src="images/pub_auto_cids.jpg"
+                alt="Architecture for Auto-CIDS vehicular intrusion detection"
+              />
+            </div>
+            <div class="pub-main">
+              <h3 class="pub-title">
+                Auto-CIDS: An Autonomous Intrusion Detection System for
+                Vehicular Networks
+              </h3>
+              <p class="pub-authors">
+                <strong>Mohsen Sorkhpour</strong> et al.
+              </p>
+              <p class="pub-venue">
+                ACM CCS Workshop on Autonomous Cybersecurity, pp. 45&ndash;55.
+              </p>
+              <div class="pub-badges">
+                <span class="chip">Cybersecurity</span>
+                <span class="chip">Autonomous Systems</span>
+                <span class="chip">Vehicular Networks</span>
+              </div>
+            </div>
+            <div class="pub-links">
+              <a
+                href="https://dl.acm.org/doi/10.1145/3689933.3690837"
+                target="_blank"
+              >
+                <span class="material-icons-outlined">open_in_new</span>
+                <span>ACM DL</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Experience -->
+      <section class="section" id="experience">
+        <div class="section-header">
+          <h2 class="section-title">Work Experience</h2>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-title">
+              <span class="timeline-role"
+                >Software Engineer &mdash; System Group</span
+              >
+              <span class="timeline-meta"
+                >2022 &ndash; Present · Tehran, Iran</span
+              >
+            </div>
+            <p class="timeline-body">
+              Contributing to <em>Rahkaran</em>, Iran’s largest ERP platform.
+              Worked on performance management, enterprise communication
+              management, and a speech-to-text module using Whisper and related
+              tools. Day-to-day stack: Python, C#, JavaScript, SQL, ELK, and
+              ASP.NET.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-title">
+              <span class="timeline-role"
+                >Software Engineer &mdash; Rai Andish Shargh</span
+              >
+              <span class="timeline-meta"
+                >2019 &ndash; 2021 · Tehran, Iran</span
+              >
+            </div>
+            <p class="timeline-body">
+              Designed and implemented core components of the Tehran
+              Municipality Transportation Management System
+              (<code>baraneh.tehran.ir</code>) with C#, ASP.NET, Entity
+              Framework, and front-end JavaScript/jQuery/Bootstrap.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-title">
+              <span class="timeline-role"
+                >Software Engineer &mdash; LimeOrder</span
+              >
+              <span class="timeline-meta">2018 &ndash; 2019 · Iran</span>
+            </div>
+            <p class="timeline-body">
+              Developed POS software for restaurants, gas stations, cafés, and
+              salons. Focused on front-end architecture using React.js to build
+              maintainable and scalable interfaces.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-title">
+              <span class="timeline-role"
+                >Software Engineer &mdash; 1st.ir</span
+              >
+              <span class="timeline-meta">2016 &ndash; 2017 · Iran</span>
+            </div>
+            <p class="timeline-body">
+              Back-end engineer on <em>PayamGostar</em> CRM, building services
+              with C#, SQL, and ASP.NET.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-title">
+              <span class="timeline-role"
+                >Full-Stack Developer &mdash; Aris Rayane</span
+              >
+              <span class="timeline-meta">2014 &ndash; 2016 · Iran</span>
+            </div>
+            <p class="timeline-body">
+              Full-stack developer on an in-house ERP system (<em>Aris</em>),
+              involved in both design and implementation.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section class="section" id="projects">
+        <div class="section-header">
+          <h2 class="section-title">Projects</h2>
+        </div>
+        <!-- <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-title">
+              <span class="timeline-role"
+                >LLM</span
+              >
+              <span class="timeline-meta"
+                >2022 &ndash; Present · Tehran, Iran</span
+              >
+            </div>
+            <p class="timeline-body">
+              Contributing to <em>Rahkaran</em>, Iran’s largest ERP platform.
+              Worked on performance management, enterprise communication
+              management, and a speech-to-text module using Whisper and related
+              tools. Day-to-day stack: Python, C#, JavaScript, SQL, ELK, and
+              ASP.NET.
+            </p>
+          </div>
+        </div> -->
+      </section>
+
+      <!-- Contact -->
+      <section class="section" id="contact">
+        <div class="section-header">
+          <h2 class="section-title">Contact</h2>
+        </div>
+        <ul class="list">
+          <li>
+            <strong>Email:</strong>
+            <a href="mailto:Sorkhpur.mohsen@gmail.com"
+              >Sorkhpur.mohsen@gmail.com</a
+            >
+          </li>
+          <li><strong>Location:</strong> Tehran, Iran</li>
+          <li><strong>Phone:</strong> +98 938 797 5917</li>
+          <li>
+            <strong>Profiles:</strong>
+            <a
+              href="https://scholar.google.com/citations?hl=en&user=yYB7LA8AAAAJ"
+              target="_blank"
+              >Google Scholar</a
+            >,
+            <a href="https://github.com/Moh3nsp" target="_blank">GitHub</a>,
+            <a
+              href="https://www.researchgate.net/profile/Mohsen-Sorkhpour-2"
+              target="_blank"
+              >ResearchGate</a
+            >,
+            <a
+              href="https://www.linkedin.com/in/mohsen-sorkhpour/"
+              target="_blank"
+              >LinkedIn</a
+            >
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>Last updated: November 2025</footer>
+
+    <!-- Theme toggle script -->
+    <script>
+      (function () {
+        const root = document.documentElement;
+        const toggle = document.querySelector("[data-theme-toggle]");
+        if (!toggle) return;
+
+        const icon = toggle.querySelector(".material-icons-outlined");
+
+        function applyTheme(theme) {
+          root.setAttribute("data-theme", theme);
+          if (icon) {
+            icon.textContent = theme === "dark" ? "light_mode" : "dark_mode";
+          }
+          toggle.setAttribute(
+            "aria-label",
+            theme === "dark" ? "Switch to light theme" : "Switch to dark theme"
+          );
+        }
+
+        const stored = window.localStorage.getItem("theme");
+        const prefersDark =
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+        let initialTheme = "light"; // default
+        if (stored === "dark" || stored === "light") {
+          initialTheme = stored;
+        } else if (prefersDark) {
+          // Only use system as a hint if nothing stored
+          initialTheme = "dark";
+        }
+
+        applyTheme(initialTheme);
+
+        toggle.addEventListener("click", () => {
+          const current =
+            root.getAttribute("data-theme") === "dark" ? "dark" : "light";
+          const next = current === "dark" ? "light" : "dark";
+          applyTheme(next);
+          window.localStorage.setItem("theme", next);
+        });
+      })();
+    </script>
+  </body>
+</html>
