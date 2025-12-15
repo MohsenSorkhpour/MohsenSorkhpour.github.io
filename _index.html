@@ -135,7 +135,7 @@
         align-items: center;
         justify-content: space-between;
         gap: 12px;
-        box-shadow: none; 
+        box-shadow: none;
       }
 
       .navbar-left {
@@ -143,6 +143,29 @@
         align-items: center;
         gap: 10px;
         min-width: 0;
+      }
+
+      .navbar-title {
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        font-size: 15px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        white-space: nowrap;
+      }
+
+      .navbar-subtitle {
+        font-size: 11px;
+        color: var(--text-muted);
+      }
+
+      .navbar-dot {
+        width: 9px;
+        height: 9px;
+        border-radius: 999px;
+        background: radial-gradient(circle at 30% 30%, #22c55e, #16a34a);
+        box-shadow: 0 0 10px rgba(34, 197, 94, 0.9);
       }
 
       .navbar-links-wrapper {
@@ -205,12 +228,12 @@
       /* Page container */
       .page {
         width: 100%;
-        max-width: 850px;
+        max-width: 960px;
       }
 
-      /* Header / hero (re-styled like sample page) */
+      /* Header / hero (flat surface, no thick border) */
       .hero {
-        margin-top: 40px;
+        margin-top: 20px;
         padding: 24px 20px 24px;
         border-radius: 0;
         background: var(--hero-bg);
@@ -232,25 +255,46 @@
         }
       }
 
-      .hero-main {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-
       .hero-main h1 {
-        margin: 0 0 4px;
-        font-size: clamp(30px, 3.4vw, 36px);
+        margin: 0 0 8px;
+        font-size: clamp(26px, 3vw, 32px);
         font-weight: 700;
-        letter-spacing: 0.03em;
+        letter-spacing: 0.02em;
       }
 
       .hero-tagline {
-        margin: 0 0 18px;
-        font-size: 15px;
-        font-weight: 500;
-        color: var(--text-main);
+        margin: 0 0 12px;
+        font-size: 14px;
+        color: var(--text-muted);
+      }
+
+      .hero-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 10px;
+        align-items: center;
+        margin-bottom: 14px;
+        font-size: 12px;
+        color: var(--text-muted);
+      }
+
+      .hero-meta span {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 4px 10px;
+        border-radius: 999px;
+        border: none;
+        background: var(--surface-subtle);
+      }
+
+      :root[data-theme="dark"] .hero-meta span {
+        background: rgba(15, 23, 42, 0.9);
+      }
+
+      .hero-meta svg {
+        width: 13px;
+        height: 13px;
       }
 
       .hero-summary {
@@ -258,64 +302,75 @@
         line-height: 1.7;
         color: var(--text-main);
         max-width: 640px;
-        margin: 0 auto 10px;
-        text-align: center;
+        margin-bottom: 10px;
       }
 
       .hero-summary strong {
         font-weight: 500;
       }
 
-      /* About links styled like "Email / LinkedIn / CV" */
-      .hero-links {
-        margin-top: 18px;
+      .hero-pill-row {
         display: flex;
         flex-wrap: wrap;
         gap: 6px;
-        justify-content: center;
-        font-size: 14px;
+        margin-bottom: 8px;
+        font-size: 12px;
+      }
+
+      .hero-pill {
+        padding: 4px 9px;
+        border-radius: 999px;
+        background: var(--bg-chip);
+        color: var(--accent-strong);
+      }
+
+      .hero-links {
+        margin-top: 14px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        font-size: 13px;
       }
 
       .hero-links a {
-        background: transparent;
-        padding: 0;
-        border-radius: 0;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 7px 12px;
+        border-radius: 999px;
         border: none;
-        color: var(--accent-strong);
-        font-weight: 500;
+        background: rgba(255, 255, 255, 0.95);
         text-decoration: none;
-        box-shadow: none;
-        transform: none;
-      }
-
-      .hero-links a:hover {
-        text-decoration: underline;
-        background: transparent;
-        box-shadow: none;
-        transform: none;
-        cursor: pointer;
-      }
-
-      /* add " / " separators between links */
-      .hero-links a + a::before {
-        content: "/";
-        margin: 0 6px 0 2px;
         color: var(--text-main);
-        font-weight: 400;
+        transition: background 0.18s ease-out, transform 0.18s ease-out,
+          box-shadow 0.18s ease-out;
       }
 
-      /* make all hero links look the same (no button for CV) */
+      :root[data-theme="dark"] .hero-links a {
+        background: rgba(15, 23, 42, 0.85);
+        color: var(--text-main);
+      }
+
       .hero-links a.primary-link {
-        background: transparent;
-        color: var(--accent-strong);
-        box-shadow: none;
+        background: #334155;
+        color: #f9fafb;
         font-weight: 500;
+        box-shadow: 0 6px 18px rgba(51, 65, 85, 0.4);
       }
 
-      /* hide icons inside about links to match simple text style */
-      .hero-links a .material-icons-outlined,
-      .hero-links a svg {
-        display: none;
+      .hero-links a.primary-link:hover {
+        box-shadow: 0 8px 22px rgba(51, 65, 85, 0.55);
+      }
+
+      a.about-links:hover {
+        cursor:'pointer';
+        box-shadow: 0 0px 1px #605c5cee;
+      }
+
+      .hero-links svg {
+        width: 14px;
+        height: 14px;
+        opacity: 0.9;
       }
 
       .hero-photo {
@@ -325,12 +380,12 @@
 
       .hero-photo-inner {
         position: relative;
-        width: 400px;
-        max-width: 400px;
+        width: 180px;
+        max-width: 220px;
         aspect-ratio: 1;
-        border-radius: 50%;
+        border-radius: 18px;
         overflow: hidden;
-        background: #d6d8db;
+        background: #e5e7eb;
         box-shadow: none;
       }
 
@@ -355,18 +410,41 @@
         filter: saturate(1.03) contrast(1.05);
       }
 
-      /* hide badge on photo to match reference style */
       .hero-photo-badge {
-        display: none;
+        position: absolute;
+        left: 12px;
+        bottom: 12px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.94);
+        font-size: 11px;
+        color: var(--text-muted);
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        backdrop-filter: blur(8px);
+      }
+
+      :root[data-theme="dark"] .hero-photo-badge {
+        background: rgba(15, 23, 42, 0.94);
+        color: var(--text-muted);
+      }
+
+      .hero-photo-badge span.dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 999px;
+        background: radial-gradient(circle at 30% 30%, #facc15, #f97316);
+        box-shadow: 0 0 10px rgba(248, 250, 252, 0.6);
       }
 
       @media (max-width: 768px) {
         .hero-photo {
-          justify-content: center;
+          justify-content: flex-start;
         }
 
         .hero-photo-inner {
-          width: 170px;
+          width: 150px;
         }
       }
 
@@ -428,20 +506,6 @@
         background: var(--chip-bg-emph);
         color: var(--chip-text-emph);
         font-weight: 500;
-      }
-
-      /* Research interests list (instead of chips) */
-      .research-list {
-        max-width: 640px;
-        margin: 0 auto;
-        padding-left: 22px;
-        font-size: 14px;
-        line-height: 1.7;
-        color: var(--text-main);
-      }
-
-      .research-list li {
-        margin-bottom: 4px;
       }
 
       /* Publications (flat list items) */
@@ -543,13 +607,14 @@
           width: 100%;
           margin-bottom: 6px;
         }
+        .pub-item {
+          grid-template-columns: minmax(0, 1fr);
+        }
 
-        a.pub-links {
+        .pub-links {
           align-items: flex-start;
-          display: none;
         }
       }
-     
 
       /* Experience / education list (flat) */
       .timeline {
@@ -652,11 +717,6 @@
         font-size: 11px;
         color: var(--text-muted);
       }
-
-       .pub-links {
-          align-items: flex-start;
-          display: none;
-        }
     </style>
   </head>
 
@@ -670,7 +730,7 @@
           <a href="#about">About</a>
           <a href="#research">Research</a>
           <a href="#publications">Publications</a>
-          <a href="#experience">Experience</a>
+          <a href="#experience">Experience</a> 
           <a href="#contact">Contact</a>
         </div>
         <button
@@ -691,15 +751,53 @@
           <h1>Mohsen Sorkhpour</h1>
           <p class="hero-tagline">AI Research Scientist</p>
 
+          <!-- <div class="hero-meta">
+          <span>
+        
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor"
+                d="M12 2.75A6.25 6.25 0 0 0 5.75 9c0 4.17 4.79 9.33 5.7 10.26a.78.78 0 0 0 1.1 0c.9-.93 5.7-6.09 5.7-10.26A6.25 6.25 0 0 0 12 2.75Zm0 8.5A2.25 2.25 0 1 1 14.25 9 2.25 2.25 0 0 1 12 11.25Z" />
+            </svg>
+            Tehran, Iran
+          </span>
+          <span>
+       
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor"
+                d="M9 4.75A2.25 2.25 0 0 1 11.25 2.5h1.5A2.25 2.25 0 0 1 15 4.75V6h2.25A2.75 2.75 0 0 1 20 8.75v8.5A2.75 2.75 0 0 1 17.25 20H6.75A2.75 2.75 0 0 1 4 17.25v-8.5A2.75 2.75 0 0 1 6.75 6H9Zm1.5 0v1.25h3V4.75a.75.75 0 0 0-.75-.75h-1.5a.75.75 0 0 0-.75.75Z" />
+            </svg>
+            AI Researcher
+          </span>
+         
+        </div> -->
+
           <p class="hero-summary">
-I’m an AI researcher with 10+ years of experience building and
-shipping real-world software and ML systems. My current research focus is trustworthy AI, with emphasis on LLM
-security/red-teaming and agentic (multi-agent) systems, grounded in NLP and robust learning. I hold an M.Sc. in
-Artificial Intelligence from Shahrood University of Technology, where my thesis addressed poisoning-robust federated
-learning. My published work spans three major ideas: adaptive red-teaming for LLMs using search and reasoning signals to
-systematically uncover failures; robust federated learning defenses designed to reduce the impact of malicious clients;
-and an autonomous intrusion detection approach for vehicular networks to improve resilience in dynamic, real-world
-settings.          <div class="hero-links">
+            I am a <strong>machine learning researcher</strong> and ML /
+            software engineer with a solid background in artificial intelligence
+            and more than a decade of experience building real-world software
+            systems. My work focuses on <strong>trustworthy AI</strong>,
+            particularly <strong>LLM security</strong>, adversarial evaluation,
+            and <strong>robust learning</strong> in practical deployments.
+          </p>
+          <p class="hero-summary">
+            On the research side, I design methods for
+            <strong>red-teaming and stress‑testing large language models</strong
+            >, from adaptive multi‑step attacks (RedHit) to robust federated
+            learning against poisoning. On the engineering side, I have shipped
+            production features in large ERP platforms, speech‑to‑text services,
+            and web applications using Python, C#, JavaScript, SQL, and modern
+            ML frameworks. I like problems where
+            <strong>clean engineering</strong> and
+            <strong>careful experimental design</strong> come together.
+          </p>
+
+          <!-- <div class="hero-pill-row">
+          <span class="hero-pill">LLM red-teaming &amp; safety</span>
+          <span class="hero-pill">Federated &amp; robust learning</span>
+          <span class="hero-pill">Security-aware ML systems</span>
+        </div> -->
+
+          <div class="hero-links">
             <a href="CV_A.pdf" target="_blank" class="primary-link">
               <span class="material-icons-outlined">description</span>
               <span class="link-label">CV (PDF)</span>
@@ -721,24 +819,18 @@ settings.          <div class="hero-links">
               <span class="material-icons-outlined">school</span>
               <span class="link-label">Scholar</span>
             </a>
-            <a
-              class="about-links"
-              href="https://github.com/Moh3nsp"
-              target="_blank"
-            >
+            <a class="about-links" href="https://github.com/Moh3nsp" target="_blank">
               <span class="material-icons-outlined">code</span>
               <span class="link-label">GitHub</span>
             </a>
-            <a
-              class="about-links"
+            <a class="about-links"
               href="https://www.researchgate.net/profile/Mohsen-Sorkhpour-2"
               target="_blank"
             >
               <span class="material-icons-outlined">science</span>
               <span class="link-label">ResearchGate</span>
             </a>
-            <a
-              class="about-links"
+            <a class="about-links"
               href="https://www.linkedin.com/in/mohsen-sorkhpour/"
               target="_blank"
             >
@@ -751,7 +843,7 @@ settings.          <div class="hero-links">
         <div class="hero-photo">
           <div class="hero-photo-inner">
             <!-- Replace with your own photo path -->
-            <img src="images/IMG_1.png" alt="Portrait of Mohsen Sorkhpour" />
+            <img src="images/profile.jpg" alt="Portrait of Mohsen Sorkhpour" />
             <div class="hero-photo-badge">
               <span class="dot"></span>
               <span>Trustworthy&nbsp;AI · LLM&nbsp;Security</span>
@@ -763,20 +855,20 @@ settings.          <div class="hero-links">
       <!-- Research interests -->
       <section class="section" id="research">
         <div class="section-header">
-          <h2 class="section-title">Research Interests</h2>
+          <h2 class="section-title">Research Focus</h2> 
         </div>
-        <ul class="research-list">
-          <li>Natural Language Processing &amp; Large Language Models</li>
-          <li>Multi-Agent Systems</li>
-          <li>Trustworthy &amp; Reliable AI</li>
-          <li>Reinforcement Learning</li>
-        </ul>
+        <div class="chip-row">
+          <span class="chip">Natural Language Processing &amp; LLMs</span>
+          <span class="chip">Multi-Agent Systems</span>
+          <span class="chip">Trustworthy AI</span>
+          <span class="chip">LLM Red-Teaming</span>
+        </div>
       </section>
 
       <!-- Publications -->
       <section class="section" id="publications">
         <div class="section-header">
-          <h2 class="section-title">Publications</h2>
+          <h2 class="section-title">Publications</h2> 
         </div>
 
         <div class="pub-list">
@@ -897,13 +989,13 @@ settings.          <div class="hero-links">
       <!-- Experience -->
       <section class="section" id="experience">
         <div class="section-header">
-          <h2 class="section-title">Work Experience</h2>
+          <h2 class="section-title">Work Experience</h2> 
         </div>
         <div class="timeline">
           <div class="timeline-item">
             <div class="timeline-title">
               <span class="timeline-role"
-                >Software Engineer &mdash; System Group</span
+                >ML / Software Engineer &mdash; System Group</span
               >
               <span class="timeline-meta"
                 >2022 &ndash; Present · Tehran, Iran</span
@@ -977,20 +1069,16 @@ settings.          <div class="hero-links">
         </div>
       </section>
 
-      <!-- Projects -->
-      <!-- <section class="section" id="projects">
+      <!-- Experience -->
+      <section class="section" id="experience">
         <div class="section-header">
-          <h2 class="section-title">Projects</h2>
-        </div> -->
-        <!-- <div class="timeline">
+          <h2 class="section-title">Projects</h2> 
+        </div>
+        <div class="timeline">
           <div class="timeline-item">
             <div class="timeline-title">
-              <span class="timeline-role"
-                >LLM</span
-              >
-              <span class="timeline-meta"
-                >2022 &ndash; Present · Tehran, Iran</span
-              >
+              <span class="timeline-role">ML / Software Engineer &mdash; System Group</span>
+              <span class="timeline-meta">2022 &ndash; Present · Tehran, Iran</span>
             </div>
             <p class="timeline-body">
               Contributing to <em>Rahkaran</em>, Iran’s largest ERP platform.
@@ -999,14 +1087,65 @@ settings.          <div class="hero-links">
               tools. Day-to-day stack: Python, C#, JavaScript, SQL, ELK, and
               ASP.NET.
             </p>
+          </div>       
+        </div>
+      </section>
+      <!-- Education & courses -->
+      <!-- 
+      <section class="section">
+        <div class="section-header">
+          <h2 class="section-title">Education</h2>
+          <p class="section-subtitle">Formal training</p>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-title">
+              <span class="timeline-role">
+                M.Sc. in Artificial Intelligence &amp; Robotics &mdash; Shahrood
+                University of Technology
+              </span>
+              <span class="timeline-meta"
+                >2020 &ndash; 2023 · GPA: 18.61 / 20</span
+              >
+            </div>
+            <p class="timeline-body">
+              Thesis:
+              <em
+                >Robust Federated Learning against Poisoning Attacks using
+                Capsule Neural Networks</em
+              >. Coursework: Machine Learning, Reinforcement Learning, Game
+              Theory, Social Network Analysis (Graph Theory), Fuzzy Systems,
+              Artificial Neural Networks, and Statistical Pattern Recognition.
+            </p>
           </div>
-        </div> -->
-      <!-- </section> -->
 
+          <div class="timeline-item">
+            <div class="timeline-title">
+              <span class="timeline-role">
+                B.Sc. in Software Engineering &mdash; Amir Kabir Technical
+                University (National University of Skill)
+              </span>
+              <span class="timeline-meta"
+                >2012 &ndash; 2016 · GPA: 16.10 / 20</span
+              >
+            </div>
+            <p class="timeline-body">
+              Project:
+              <em
+                >Forecasting the Tehran Stock Exchange using neural networks and
+                time series</em
+              >.
+            </p>
+          </div>
+        </div>
+      </section> -->
+ 
+     
       <!-- Contact -->
       <section class="section" id="contact">
         <div class="section-header">
           <h2 class="section-title">Contact</h2>
+        
         </div>
         <ul class="list">
           <li>
@@ -1014,15 +1153,16 @@ settings.          <div class="hero-links">
             <a href="mailto:Sorkhpur.mohsen@gmail.com"
               >Sorkhpur.mohsen@gmail.com</a
             >
-          </li> 
+          </li>
+          <li><strong>Location:</strong> Tehran, Iran</li>
+          <li><strong>Phone:</strong> +98 938 797 5917</li>
           <li>
             <strong>Profiles:</strong>
             <a
               href="https://scholar.google.com/citations?hl=en&user=yYB7LA8AAAAJ"
               target="_blank"
               >Google Scholar</a
-            >,
-            <a href="https://github.com/Moh3nsp" target="_blank">GitHub</a>,
+            >, <a href="https://github.com/Moh3nsp" target="_blank">GitHub</a>,
             <a
               href="https://www.researchgate.net/profile/Mohsen-Sorkhpour-2"
               target="_blank"
