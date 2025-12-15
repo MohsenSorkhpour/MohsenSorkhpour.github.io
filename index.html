@@ -369,6 +369,22 @@
           width: 170px;
         }
       }
+      /* Desktop/tablet: text left, photo right */
+.hero {
+  grid-template-areas: "main photo";
+}
+.hero-main { grid-area: main; }
+.hero-photo { grid-area: photo; }
+
+/* Mobile: photo on top */
+@media (max-width: 768px) {
+  .hero {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "photo"
+      "main";
+  }
+}
 
       /* Section layout (flat, no card borders) */
       .section {
